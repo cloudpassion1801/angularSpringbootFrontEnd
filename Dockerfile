@@ -12,11 +12,13 @@ RUN npm install -g @angular/cli@7.3.9
 
 # add app
 COPY . /app
+ARG configuration=production
 
 # start app
-RUN npm run build --prod
+RUN npm run build -- --output-path=./dist/out --configuration $configuration
 
 
 # stage 2
 FROM nginx:alpine
-COPY --from=node /app/dist/angular-app /usr/share/nginx/html
+COPY --from=node /app/dist/out/ /usr/share/nginx/html
+COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
