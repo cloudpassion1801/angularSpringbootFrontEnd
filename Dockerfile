@@ -1,5 +1,5 @@
 #base image
-FROM node:12.2.0
+FROM node:12.2.0 as node
 WORKDIR /app
 
 # add `/app/node_modules/.bin` to $PATH
@@ -14,4 +14,9 @@ RUN npm install -g @angular/cli@7.3.9
 COPY . /app
 
 # start app
-CMD ng serve --open
+RUN npm run build --prod
+
+
+# stage 2
+FROM nginx:alpine
+COPY --from=node /app/dist/angular-app /usr/share/nginx/html
