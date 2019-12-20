@@ -7,7 +7,7 @@ spec:
   selector: 
     matchLabels: 
       app: angular 
-  replicas:  # tells deployment to run 2 pods matching the template 
+  replicas: 2 # tells deployment to run 2 pods matching the template 
   template: 
     metadata: 
       labels: 
@@ -15,7 +15,7 @@ spec:
     spec: 
       containers: 
       - name: angular 
-        image: anurag4516/frontend1 
+        image: anurag4516/frontend 
         ports: 
         - containerPort: 80 
 --- 
@@ -31,5 +31,5 @@ spec:
   - protocol: TCP 
     port: 80 
     targetPort: 80 
-    nodePort: 31000 
+    nodePort: 32000 
   type: NodePort 
