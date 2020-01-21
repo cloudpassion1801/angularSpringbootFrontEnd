@@ -18,7 +18,7 @@ export class UserServiceService {
  
  
   constructor(private http: HttpClient) {
-    this.usersUrl = 'http://localhost:8080/users';
+    this.usersUrl = 'http://angularbackendservice/users';
   }
   public findAll(): Observable<User[]> {
     return this.http.get<User[]>(this.usersUrl,httpOptions);
