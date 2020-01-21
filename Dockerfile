@@ -22,3 +22,5 @@ RUN npm run build -- --output-path=./dist/out --configuration $configuration
 FROM nginx:alpine
 COPY --from=node /app/dist/out/ /usr/share/nginx/html
 COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
+
+#command to run docker build -t anurag4516/frontend
