@@ -15,7 +15,7 @@ spec:
     spec: 
       containers: 
       - name: angular 
-        image: anurag4516/frontend 
+        image: anurag4516/frontend:v1 
         ports: 
         - containerPort: 80 
 --- 
